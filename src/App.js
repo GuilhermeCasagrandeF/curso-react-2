@@ -231,11 +231,19 @@ function App() {
             return time;
         }));
     }
+
+    function cadastrarTime(novoTime) {
+        setTimes([...times, {...novoTime, id: uuid() }]);
+    }
     
     return (
         <div>
             <Banner />
-            <Formulario times={times.map(time => time.nome)} aoCadastrar={colaborador => setColaboradores([...colaboradores, colaborador])} />
+            <Formulario 
+                times={times.map(time => time.nome)} 
+                aoCadastrar={colaborador => setColaboradores([...colaboradores, colaborador])} 
+                cadastrarTime={cadastrarTime}
+            />
             <section className="times">
                 <h1>Minha organização</h1>
                 {times.map((time, indice) => 
